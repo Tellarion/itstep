@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1
+        let my_nums = prompt('Давайте-ка подсчитаем суммы всех введенных чисел (1 2 3 4 5) (пробелом разделять)')
+        my_nums = my_nums.split(' ')
+        let all_sum = 0;
+        for(let i = 0; i < my_nums.length; i++) {
+            all_sum += parseInt(my_nums[i])
+        }
+        alert(all_sum)
+        // 2
+        const nod = (n, m) => {
+            if (m !== 0) {
+                const k = n % m;
+                return nod(m, k);
+            }
+            return n;
+        };
+
+        let a = Math.abs(prompt('Введите первое число'));
+        let b = Math.abs(prompt('Введите второе число'));
+        alert(nod(a,b))
+        // 3
+        let number = parseInt(prompt('Введите число для нахождения всех делителей'))
+        let delim = "";
+        for (let i=2; i < number; i++) {
+            console.log('test')
+            if ((number %i) ==0) {
+                delim += `${i}; `
+            }
+        }
+        alert(`Делители: ${delim}`)
+        // 4
+        let w_num = prompt(`Введите число и я скажу сколько в нем количество чисел`)
+        alert(`Количество: ${w_num.length}`)
+        // 5
+        while(true) {
+            let numbers = prompt(`Введите 10 чисел через запятую`)
+            numbers = numbers.split(',')
+            if(numbers.length == 10) {
+                let stats = ``;
+                let stats_plus = 0;
+                let stats_minus = 0;
+                let stats_zero = 0;
+                let stats_chet = 0;
+                let stats_nechet = 0;
+                for(let i = 0; i <= numbers.length; i++) {
+                    if(numbers[i] >= 1) { stats_plus++ }
+                    if(numbers[i] <= -1) { stats_minus++ }
+                    if(numbers[i] == 0) { stats_zero++ }
+                    if(numbers[i] % 2) { stats_chet++ } else { stats_nechet++ }
+                }
+                alert(`Статистика\nКоличество положительных: ${stats_plus} шт.\nКоличество отрицательных: ${stats_minus} шт.\nКоличество нулей: ${stats_zero} шт.\nКоличество четных чисел: ${stats_chet} шт.\nКоличество нечетных чисел: ${stats_nechet} шт.`)
+                break
+            } else {
+                alert('Должно быть 10 цифр')
+                continue
+            }
+        }
+        // 6
+        while(true) {
+            let calc_a = parseFloat(prompt(`Введите первое число`))
+            let calc_b = parseFloat(prompt(`Введите второе число`))
+            let calc_znak = prompt(`Введите знак (+ / - *)`)
+            let calc_res = 0
+            if(calc_znak == "+" || calc_znak == "/" || calc_znak == "*" || calc_znak == "-") {
+                switch(calc_znak) {
+                    case '+': { calc_res = calc_a + calc_b} break;
+                    case '-': { calc_res = calc_a - calc_b } break;
+                    case '/': { calc_res = calc_a / calc_b } break;
+                    case '*': { calc_res = calc_a * calc_b } break;
+                }
+                alert(`Ответ: ${calc_res}`)
+                let next = prompt(`Желаете решить еще один пример? (да/нет)`)
+                if(next.toLowerCase() == "да") { continue } else { break }
+            } else {
+                alert(`Неизвестный знак`)
+                continue
+            }
+        }
+        // 7
+        let sdv = prompt(`Введите число для сдвига`)
+        let sdv_2 = prompt(`На сколько знаков нужно сдвинуть число?`)
+        let sdv_new = ""
+        for(let i = sdv_2; i < sdv.length; i++) {
+            sdv_new += sdv[i]
+        }
+        for(let i = 0; i < sdv_2; i++) {
+            sdv_new += sdv[i]
+        }
+        alert(`Ваше число стало: ${sdv_new}`)
+        // 8
+        let week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
+        let week_show = 0;
+        while(true) {
+            alert(week[week_show])
+            week_show++
+            if(week_show == week.length) { break } else { continue }
+        }
+        // 9
+        let table_p = `Таблица умножения:\n`;
+        for(let i = 2; i <= 9; i++) {
+            table_p += `\nC[${i}] = `;
+            for(let m = 1; m <= 10; m++) {
+                let now_calc = i * m;
+                table_p += `[*${m} = ${now_calc}] `; 
+            }
+        }
+        alert(table_p)
+        // 10
+        let left = 1
+        let right = 100
+        let real = prompt(`Загадайте число от 1 до 100`)
+        let current = 0
+        while(true) {
+            current = parseInt((left + right) / 2)
+            let ans = prompt(`Ваше число ${current}? (да, больше, меньше)`)
+            if(ans.toLowerCase() == "да") {
+                alert(`Я справился! Ваше число было ${real} и я отгадал ${current}`)
+                break
+            } else if(ans.toLowerCase() == "больше") {
+                left = current + 1
+                continue
+            } else if(ans.toLowerCase() == "меньше") {
+                right = current - 1
+                continue
+            } else {
+                alert('Неизвестный ответ')
+                continue
+            }
+        }
+    </script>
+</body>
+</html>

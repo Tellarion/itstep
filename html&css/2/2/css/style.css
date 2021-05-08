@@ -1,0 +1,70 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    background: #f5f5f5;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    min-height: 100vh;
+    width: 100vw;
+    max-width: 800px;
+}
+
+section h3 {
+    display: flex;
+    justify-content: flex-start;
+    width: 350px;
+    margin: 20px 0px 0px 0px;
+}
+
+section ul {
+    padding: 0;
+    list-style-type: none;    
+}
+
+section ul li {
+    padding: 20px 50px 20px 50px;
+    width: 250px;
+}
+
+section ul li:nth-of-type(2n+1) {
+    background: #abcbd8;
+}
+
+section ul .unchecked {
+    background: #b4d7e3;
+}
+
+section ul .unchecked:before {
+    content: "";
+    position: absolute;
+    background: url("../icons/unchecked_16.png");
+    height: 16px;
+    width: 16px;
+    margin-left: -30px;
+}
+
+section ul .unchecked:after, section ul .checked:after {
+    content: "x";
+    position: absolute;
+    color: red;
+    margin-left: 20px;
+}
+
+section ul .checked {
+    background: #e2e2e2!important;
+}
+
+section ul .checked:before {
+    content: "";
+    position: absolute;
+    background: url("../icons/checked_16.png");
+    height: 16px;
+    width: 16px;
+    margin-left: -30px;
+}

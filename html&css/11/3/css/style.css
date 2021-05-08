@@ -1,0 +1,178 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f5f5f5;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+section .global {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-shadow: 0px 0px 20px -5px #000000;
+    padding: 25px;
+    max-width: 900px;
+    margin: 20px;
+}
+
+section .global .block {
+    display: flex;
+    width: 450px;
+}
+
+section .global .block h3 {
+    font-weight: 400;
+}
+
+section .global .block .row {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    align-items: end;
+    margin: 20px 0px 20px 0px;
+}
+
+section .global .block .row input[type="text"], section .global .block .row input[type="email"], section .global .block .row input[type="password"], section .global .block .row input[type="date"]  {
+    display: flex;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgb(167, 167, 167);
+    background: transparent;
+    margin: 5px 10px 5px 0px;
+    padding: 0px 15px 5px 15px;
+}
+
+section .global .block .row select {
+    display: flex;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgb(167, 167, 167);
+    background: transparent;
+    margin: 5px 10px 5px 0px;
+    padding: 0px 15px 3px 15px;
+}
+
+section .global .block .row input[type="date"] {
+    padding: 0px 15px 0px 15px;
+}
+
+section .global .block .row img {
+    position: relative;
+    display: flex;
+    content: "";
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 28px;
+    width: 28px;
+    padding-right: 10px;
+}
+
+section .global .block ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+section .global .block ul li {
+    display: flex;
+    align-items: center;
+}
+
+section .global .block ul li input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+section .global .block_full {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+section .global .block_full button {
+    margin-top: 30px;
+    background-color: #018a8a;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+    padding: 10px 30px 10px 30px;
+}
+
+section .global .block_full button:hover {
+    opacity: 0.7;
+}
+
+section .global .block_full {
+    position: relative;
+    margin: 30px 0px 10px 0px;
+}
+
+section .global .block_full::before {
+    position: absolute;
+    content: "";
+    height: 1px;
+    width: calc(100% + 50px);
+    left: 0;
+    margin-left: -25px;
+    background-color: rgb(167, 167, 167);
+}
+
+
+@media screen and (min-width: 600px) and (max-width: 900px) {
+    section .global .block {
+        width: 100%;
+    }
+
+    section .global .block form {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    section .global .block {
+        width: 100%;
+    }
+
+    section .global .block form {
+        width: 100%;
+    }
+
+    section .global .block .row {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    section .global .block .row img:first-child {
+        flex-basis: 28px;
+    }
+
+    section .global .block .row input {
+        flex-basis: 100%;
+    }
+
+    section .global .block .row:nth-of-type(1) input, section .global .block .row:nth-of-type(2) input {
+        flex-basis: calc(100% - 78px);
+    }
+
+    section .global .block .row:nth-of-type(3) input {
+        flex-basis: calc(100% - 78px);
+    }
+
+    section .global .block .row:nth-of-type(3) input:last-child {
+        flex-basis: 100%;
+    }
+
+    section .global .block:nth-of-type(2) .row input {
+        flex-basis: 100%;
+    }
+}

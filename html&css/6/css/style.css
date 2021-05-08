@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    background: url('../img/666.jpg') center center no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.5);
+    margin: 50px auto 50px auto;
+}
+
+.container p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 72px;
+    padding: 20px;
+    margin: 0;
+    color: #5f1313;
+    opacity: 0.9;
+    text-align: center;
+}

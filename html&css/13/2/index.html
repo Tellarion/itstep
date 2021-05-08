@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dnumber 2</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/fa.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/jquery-3.6.0.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+    <header class="d-flex flex-column flex-md-row align-items-center p-1 px-md-4 bg-mystat">
+        <div class="d-flex m-2 logo text-light"><i class="fas fa-user-graduate"></i></div>
+        <nav class="d-flex flex-column flex-md-row justify-content-between w-100 align-items-center">
+            <ul class="d-flex flex-column flex-md-row list-group m-2 me-md-auto">
+                <li class="list-group p-2"><a href="#">Attendance</a></li>
+                <li class="list-group p-2"><a href="#">Schedule</a></li>
+                <li class="list-group active p-2"><a href="#">Homework</a></li>
+            </ul>
+            <ul class="d-flex flex-column flex-md-row list-group m-2">
+                <li class="list-group p-2"><a href="#"><i class="fas fa-bell"></i></a></li>
+                <li class="list-group p-2"><a href="#"><i class="fas fa-user-circle"></i></a></li>
+                <li class="list-group p-2"><a href="#"><i class="fas fa-door-open"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="d-flex flex-column justify-content-center w-100">
+            <h1 class="fw-light text-center m-5">HOMEWORK</h1>
+            <div class="tab-content" id="nav-tabContent">
+
+            </div>
+        </section>
+    </main>
+    <footer>
+        <script>
+
+            function random(max) {
+                return Math.floor(Math.random() * Math.floor(max));
+            }
+
+            function get_names(num = null) {
+                let list = ['Danilov Aleksandr', 'Sofia Vetrova', 'Maleyko Sergey', 'Byrak Ivan', 'Atabaeva Anastaysha', 'Fedorova Inna', 'Fedorov Ivan', 'Novik Dmitry', 'Poletaeva Love', 'Fedorov Ivan', 'Masko Michael', 'Volnov Egor', 'Bordin Yura', 'Kasem Alan', 'Mkrtyan Ruslan', 'Oleg Nikiforov'];
+                return list = (num != null) ? list[num] : list;
+            }
+
+            let generate_tabs = ``;
+            let generate_tabs_content = ``;
+            
+            let names_count = get_names().length;
+
+            generate_tabs_content = `
+                <div class="row m-0 p-0">
+                    <div class="in-tab d-flex flex-row col-12">
+                        <div class="d-flex col-1 p-4">
+                            <div class="d-flex flex-column">
+                                <label>Group</label>
+                                <p><select><option value="0">ABC-1234</option><option value="1">ABC-1235</option></select></p>
+                            </div>
+                        </div>
+                        <div class="d-flex col-1 p-4">
+                            <div class="d-flex flex-column">
+                                <label>Subject</label>
+                                <p><select><option value="0">HTML & CSS</option><option value="1">HTML & JS</option></select></p>
+                            </div>
+                        </div>
+                        <div class="d-flex col-10 p-4">
+                            <div class="d-flex flex-column w-100">
+                                <label>&nbsp</label>
+                                <button type="submit" class="btn mb-2 btn-mystat" id="show" style="margin-left: 20px; width: fit-content;">Show</button>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+            `;
+
+            generate_tabs_content += `<div class="table-responsive"><table class="table p-4 text-center table-sm" width="100%"><thead><th style="width: 10%;"></th><th style="width: 40%;">Student</th><th style="width: 10%;">18.04</th><th style="width: 10%;">14.04</th><th style="width: 10%;">12.04</th><th style="width: 10%;">10.04</th></thead>`;
+
+            for(let m = 1; m <= names_count; m++) {
+                let get_name = get_names(m-1);
+                let get_gpa = random(12);
+                let link = `<i class="fas fa-link"></i> <select><option>-</option></select>`;
+                let attach = '<i class="fas fa-file-code"></i> <select><option>-</option></select>';
+                let deff = `<div class="line"></div>`;
+                generate_tabs_content += `<tr class="m-auto"><td>${m}</td><td>${get_name}</td><td>${attach}</td><td>${link}</td><td><select><option>-</option></select></td><td>${deff}</td></tr>`;
+            }
+
+            generate_tabs_content += `</table></div>`;
+
+            $('#nav-tabContent').html(generate_tabs_content);
+            
+            $('#add_homework').on('click', function() {
+                $('#exampleModal').modal('show');
+                $('.close').on('click', function() {
+                    $('#exampleModal').modal('hide');
+                });
+                $('#close').on('click', function() {
+                    $('#exampleModal').modal('hide');
+                });
+            });
+        </script>
+    </footer>
+</body>
+</html>

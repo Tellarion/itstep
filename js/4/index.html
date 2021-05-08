@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /*
+
+        // 1
+
+        function ff_1(a1, a2) {
+            return (a1 < a2) ? -1 : (a1 > a2) ? 1 : 0;
+        }
+
+        let chis1 = prompt('[1] Введите первое число')
+        let chis2 = prompt('[1] Введите второе число')
+        let res = ff_1(chis1, chis2)
+        alert(`[1] Ответ: ${res}`)
+
+        // 2
+
+        function ff_2(a1) {
+            total = 1
+            for (i = 0; i < a1; i++) {
+                total = total * (a1 - i)
+            }
+            return total
+        }
+
+        let factorial = prompt('[2] Введите число для возведения в факториал')
+        res = ff_2(factorial)
+        alert(`[2] Ответ: ${res}`)
+
+        // 3
+
+        function ff_3(toStr) {
+            return toStr.join('')
+        }
+
+        let chisl_3 = prompt(`[3] Введите числа через пробел`)
+        res = ff_3(chisl_3.split(' '))
+        alert(`[3] Ответ: ${res}`)
+
+        // 4
+
+        function ff_4(a1, a2 = null) {
+            let calc = 0
+            if(a2 != null) {
+                calc = a1 * a2
+            } else {
+                calc =  a1 * a1
+            }
+            return calc
+        }
+
+        let param1 = prompt(`[4] Введите сторону 1`)
+        let param2 = prompt(`[4] Введите сторону 2 (не обяз)`)
+        if(param2) { res = ff_4(param1, param2) } else { res = ff_4(param1) }
+        alert(`[4] Ответ: ${res}`)
+
+        // 5
+
+        function ff_5(num) {
+
+            let sum = 1
+ 
+            for(let i = 2; i <= num / 2; i++ ) {
+                if(num % i == 0)
+                    sum += i
+            }
+        
+            return sum == num
+        }
+
+        let perfect = parseInt(prompt(`[5] Введите любое число чтобы определить совершенное/несовершенное оно ли`))
+        if(ff_5(perfect)) {
+            alert(`[5] ${perfect} совершенное`)
+        } else {
+            alert(`[5] ${perfect} не совершенное`)
+        }
+
+        // 6
+
+        function ff_6(num) {
+
+            let sum = 1
+
+            for(let i = 2; i <= num / 2; i++ ) {
+                if(num % i == 0)
+                    sum += i
+            }
+
+            return sum == num
+        }
+
+        let min_f = parseInt(prompt(`[6] Введите минимальный диапазон поиска`))
+        let max_f = parseInt(prompt(`[6] Введите максимальный диапазон поиска`))
+        let all_chisl_perf = ``;
+        for(let i = min_f; i <= max_f; i++) {
+            if(ff_6(i)) {
+                all_chisl_perf += `${i} `
+            }
+        }
+
+        alert(`[6] Совершенные числа были найдены: ${all_chisl_perf}`)
+
+        // 7
+
+        function ff_7(hour, mins = null, secs = null) {
+            if(!mins) mins = "00"
+            if(!secs) secs = "00"
+            return `${hour}:${mins}:${secs}`
+        }
+
+        let date = new Date()
+        let hour = date.getHours()
+        let mins = date.getMinutes()
+        let sec = date.getSeconds()
+        res = ff_7(hour, mins, sec)
+        alert(`[7] ${res}`)
+
+        */
+
+        // 8
+
+        function ff_8(date = new Date) {
+            return parseInt((date.getTime() / 1000))
+        }
+        let date_2 = new Date
+
+        res = ff_8(date_2)
+
+        alert(`[8] ${res}`)
+
+        // 1616693555 (exm)
+
+        // 9 
+
+        function ff_9(secs) {
+            let time = new Date(1970, 0, 1)
+            time.setSeconds(secs)
+            return time
+        }
+        
+        // UTC TIME
+
+        let get_date = ff_9(1616693555)
+        let hour_2 = get_date.getHours()
+        let mins_2 = get_date.getMinutes()
+        let sec_2 = get_date.getSeconds()
+        alert(`${hour_2}:${mins_2}:${sec_2}`)
+
+        // 10
+
+        // для десятого задания напишите две любых переменных для теста (по умолчанию Date передается базовый)
+        // new Date().setSeconds or setHours and send
+
+        function ff_10(date1, date2) {
+            let first_date = parseInt((date1.getTime() / 1000))
+            let second_date = parseInt((date2.getTime() / 1000))
+            let calc_date = second_date - first_date
+            let new_date = new Date(1970, 0, 1)
+            new_date.setSeconds(calc_date)
+            return new_date
+        }
+
+        let get_date_x = ff_10(new Date(), new Date())
+
+        let hour_3 = get_date_x.getHours()
+        let mins_3 = get_date_x.getMinutes()
+        let sec_3 = get_date_x.getSeconds()
+
+        alert(`[10] Разница между датами: ${hour_3}:${mins_3}:${sec_3}`)
+    </script>
+</body>
+</html>

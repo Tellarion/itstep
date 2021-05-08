@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 100vh;
+  width: 100vw;
+}
+
+.block {
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+  max-width: 1000px;
+  margin: 10px;
+}
+
+.block .text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  z-index: 1;
+}
+
+.block .image {
+  display: flex;
+  position: relative;
+  background: url('../img/wow.jpg') no-repeat center top;
+  background-size: 150%;
+  width: 250px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hidden {
+  position: absolute;
+  display: block;
+  background: rgb(0,0,0,0);
+  height: 200px;
+  width: 500px;
+  z-index: 2;
+}
+
+.hidden:hover {
+  animation: EX_ALL 0.3s linear forwards;
+}
+
+.hidden:hover ~ .image {
+  animation: EX_IMAGE 1s linear forwards;
+}
+
+@-webkit-keyframes EX_ALL {
+  to { background: rgb(0,0,0,0.3); }
+}
+
+@-webkit-keyframes EX_IMAGE {
+  from { background-size: 150%; }
+  to { background-size: 200%; }
+}

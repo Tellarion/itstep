@@ -1,0 +1,212 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: #1b5589;
+}
+
+header ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+header ul li {
+    margin: 0px 20px 0px 20px;
+}
+
+header ul .active > a {
+    color: #fff;
+}
+
+header ul li a {
+    color: #779fbc;
+    text-decoration: none;
+}
+
+header ul li a:hover {
+    color: #fff;
+    opacity: 0.7;
+}
+
+header .logo {
+    display: flex;
+    margin-right: calc(100vw - 99vw);
+}
+
+header .logo i {
+    font-size: 2rem;
+    color: #fff;
+}
+
+header .profile {
+    display: flex;
+}
+
+header .profile img {
+    height: 48px;
+    width: 48px;
+    margin: 10px;
+}
+
+section h1 {
+    display: flex;
+    justify-content: center;
+    font-weight: 300;
+    margin: calc(100vw - 99vw) 0px calc(100vw - 99vw) 0px;
+}
+
+section .shedule {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+section h3 {
+    display: flex;
+    justify-content: center;
+    font-weight: 200;
+    margin: calc(100vw - 99vw) 0px calc(100vw - 99vw) 0px;
+}
+
+/* NEWS */
+
+section .news {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+}
+
+section .news .item {
+    display: flex;
+    border: 1px solid #e0e0e0;
+    padding: calc(100vw - 99.5vw);
+}
+
+section .news .item .image {
+    display: flex;
+}
+
+section .news .item .about {
+    display: flex;
+    flex-direction: column;
+    margin: calc(100vw - 99.5vw);
+}
+
+section .news .item .about .heading {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+section .news .item .about .heading span:first-child {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 1.2em;
+    font-weight: 600;
+    width: 100%;
+}
+
+section .news .item .about .heading span:last-child {
+    display: flex;
+    justify-content: flex-end;
+    font-weight: 300;
+    font-size: 0.8em;
+    width: 100%;
+}
+
+section .news_more {
+    margin-top: calc(100vw - 99vw);
+}
+
+section .news_more .btn-news {
+    background-color: #6c757d;
+    width: 100%;
+    color: #fff;
+}
+
+/* REWARDS */
+
+section .rewards {
+    display: flex;
+    flex-direction: column;
+}
+
+section .rewards .item {
+    display: flex;  
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+section .rewards .item .left {
+    position: relative;
+    display: flex;
+    border: 1px solid #e0e0e0;
+    border-radius: 0px 50px 50px 0px;
+    padding: calc(100vw - 99.7vw);
+    width: 130px;
+}
+/*
+section .rewards .item .left:after {
+    position: absolute;
+    content: "";
+    border: solid transparent;
+    left: 100%;
+    border-left-color: #eee;
+    border-width: 9px;
+    right: 0;
+}
+*/
+
+section .rewards .item .right {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    border: 1px solid #e0e0e0;
+    border-radius: 50px 0px 0px 50px;
+    padding: calc(100vw - 99.7vw);
+    width: 130px;
+}
+
+section .rewards .item .center {
+    display: flex;
+    justify-content: center;
+    font-size: 1.6em;
+    font-weight: 700;
+    margin-left: calc(100vw - 99.5vw);
+    margin-right: calc(100vw - 99.5vw);
+    width: 100px;
+}
+
+section .rewards_more {
+    margin-top: calc(100vw - 99vw);
+}
+
+section .rewards_more .btn-rewards {
+    background-color: #f8f9fa;
+    width: 100%;
+    color: #000;
+}
+
+@media screen and (max-width: 1000px) {
+    /* DZ LAST HTML PRIM */
+    section {
+        display: none;
+    }
+    body::after {
+        position: absolute;
+        content: "хорошо, что в задании нет адаптации под мобилку правда? :)";
+        width: 100vw;
+        height: 100vw;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

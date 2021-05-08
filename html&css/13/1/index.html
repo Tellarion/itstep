@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dnumber 1</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/fa.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/jquery-3.6.0.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+    <header class="d-flex flex-column flex-md-row align-items-center p-1 px-md-4 bg-mystat">
+        <div class="d-flex m-2 logo text-light"><i class="fas fa-user-graduate"></i></div>
+        <nav class="d-flex flex-column flex-md-row justify-content-between w-100 align-items-center">
+            <ul class="d-flex flex-column flex-md-row list-group m-2 me-md-auto">
+                <li class="list-group active p-2"><a href="#">Attendance</a></li>
+                <li class="list-group p-2"><a href="#">Schedule</a></li>
+                <li class="list-group p-2"><a href="#">Homework</a></li>
+            </ul>
+            <ul class="d-flex flex-column flex-md-row list-group m-2">
+                <li class="list-group p-2"><a href="#"><i class="fas fa-bell"></i></a></li>
+                <li class="list-group p-2"><a href="#"><i class="fas fa-user-circle"></i></a></li>
+                <li class="list-group p-2"><a href="#"><i class="fas fa-door-open"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="d-flex flex-column justify-content-center w-100">
+            <h1 class="fw-light text-center m-5">23 APRIL, TUESDAY</h1>
+            <nav>
+                <div class="nav nav-tabs" id="nav-tabs" role="tablist">
+                    
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+
+            </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">New homework</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                  <label for="exampleFormControlInput1">Topic:</label>
+                                  <input type="text" class="form-control" id="exampleFormControlInput1">
+                                </div>
+                                <div class="form-group mt-3 mb-3">
+                                    <input class="form-control" type="file" id="formFile">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" id="close" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-mystat">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <script>
+
+            function random(max) {
+                return Math.floor(Math.random() * Math.floor(max));
+            }
+
+            function get_names(num = null) {
+                let list = ['Danilov Aleksandr', 'Sofia Vetrova', 'Maleyko Sergey', 'Byrak Ivan', 'Atabaeva Anastaysha', 'Fedorova Inna', 'Fedorov Ivan', 'Novik Dmitry', 'Poletaeva Love', 'Fedorov Ivan', 'Masko Michael', 'Volnov Egor', 'Bordin Yura', 'Kasem Alan', 'Mkrtyan Ruslan', 'Oleg Nikiforov'];
+                return list = (num != null) ? list[num] : list;
+            }
+
+            let generate_tabs = ``;
+            let generate_tabs_roll = ``;
+            let generate_tabs_roll_count = 0;
+            let generate_tabs_content = [];
+            
+            for(let i = 1; i < 9; i++) {
+                if(i == 1) { generate_tabs += `<button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-lesson-${i}" type="button" role="tab" aria-controls="nav-home" aria-selected="true">${i} lesson</button>` } else {
+                    generate_tabs += `<button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-lesson-${i}" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">${i} lesson</button>`;
+                }
+
+                generate_tabs_roll += `<div class="tab-pane fade" id="nav-lesson-${i}" role="tabpanel" aria-labelledby="lesson-${i}">${i}</div>`;
+                generate_tabs_roll_count++;
+
+                let names_count = get_names().length;
+
+                generate_tabs_content[i] = `
+                    <div class="row m-0 p-0">
+                        <div class="in-tab d-flex flex-row col-12">
+                            <div class="d-flex col-3 p-4">
+                                <div class="d-flex flex-column">
+                                    <label>Group</label>
+                                    <p>ABC-1234</p>
+                                </div>
+                            </div>
+                            <div class="d-flex col-3 p-4">
+                                <div class="d-flex flex-column">
+                                    <label>Subject</label>
+                                    <p>HTML & CSS</p>
+                                </div>
+                            </div>
+                            <div class="d-flex col-3 p-4">
+                                <div class="d-flex flex-column w-100">
+                                    <label>Lesson topic</label>
+                                    <textarea class="form-control" rows="1"></textarea>
+                                </div>
+                            </div>
+                            <div class="d-flex col-3 p-4">
+                                <div class="d-flex flex-column">
+                                    <label>Homework</label>
+                                    <button type="submit" class="btn mb-2 btn-mystat" id="add_homework">Add homework</button>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                `;
+
+                generate_tabs_content[i] += `<div class="table-responsive"><table class="table p-4 text-center table-sm" width="100%"><thead><th style="width: 10%;"></th><th style="width: 30%;">Name</th><th style="width: 10%;">GPA</th><th style="width: 10%;">Is present</th><th style="width: 10%;">Test</th><th style="width: 10%;">Classwork</th><th style="width: 20%;">Comment</th></thead>`;
+
+                for(let m = 1; m <= names_count; m++) {
+                    let get_name = get_names(m-1);
+                    let get_gpa = random(12);
+                    get_gpa = (get_gpa == 0) ? random(12) : get_gpa;
+                    generate_tabs_content[i] += `<tr class="m-auto"><td>${m}</td><td>${get_name}</td><td>${get_gpa}</td><td><div class="d-flex flex-row justify-content-center"><div class="form-check d-flex"><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"></div><div class="form-check d-flex"><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"></div><div class="form-check d-flex"><input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"></div></div></td><td><select><option>-</option></select></td><td><select><option>-</option></select></td><td><textarea class="form-control" rows="1"></textarea></td></tr>`;
+                }
+
+                generate_tabs_content[i] += `</table></div>`;
+            }
+
+            console.log(generate_tabs);
+            $('#nav-tabs').html(generate_tabs);
+            $('#nav-tabContent').html(generate_tabs_roll);
+            for(let i = 1; i <= generate_tabs_roll_count; i++) {
+                console.log(generate_tabs_content[i]);
+                $(`#nav-lesson-${i}`).html(generate_tabs_content[i]);
+                if(i == 1) {
+                    $(`#nav-lesson-${i}`).addClass('show');
+                    $(`#nav-lesson-${i}`).addClass('active');
+                }
+            }
+            $('#add_homework').on('click', function() {
+                $('#exampleModal').modal('show');
+                $('.close').on('click', function() {
+                    $('#exampleModal').modal('hide');
+                });
+                $('#close').on('click', function() {
+                    $('#exampleModal').modal('hide');
+                });
+            });
+        </script>
+    </footer>
+</body>
+</html>

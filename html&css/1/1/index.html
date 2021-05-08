@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>krd.itstep.org - Valentina 1</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            width: 100%;
+        }
+
+        .valentina {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            padding: 1rem;
+            max-width: 800px;
+        }
+
+        .valentina h1 {
+            display: flex;
+            justify-content: center;
+            font-weight: 800;
+            color: #42388a;
+        }
+
+        .valentina .block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .valentina .block .act, .valentina .block .about {
+            margin: 10px 0px 10px 0px;
+            font-weight: 700;
+            color: #839ab3;
+        }
+
+        .valentina .block .upper {
+            text-transform: uppercase;
+        }
+
+        .valentina .block p {
+            display: flex;
+            text-align: left;
+        }
+
+        .valentina .block p small {
+            font-style: italic;
+        }
+
+        .valentina .block p:nth-of-type(1) {
+            font-weight: 500;
+            max-width: 400px;
+        }
+
+        .valentina .block p:nth-of-type(3) {
+            font-weight: 400;
+        }
+
+        .valentina .block p:nth-of-type(4) {
+            font-weight: 400;
+        }
+
+        .valentina .block span {
+            text-transform: initial;
+        }
+    </style>
+    <section>
+        <div class="valentina">
+            <h1>Romeo and Juliet</h1>
+            <div class="block">
+                <div class="act upper">act 1</div>
+                <div class="about upper">prologue</div>
+                <p>Two households, both alike in dignity,
+                    In fair Verona, where we lay our scene,
+                    From ancient grudge break to new mutiny,
+                    Where civil blood makes civil hands unclean.
+                    From forth the fatal loins of these two foes
+                    A pair of star-cross'd lovers take their life;
+                    Whose misadventured piteous overthrows
+                    Do with their death bury their parents' strife.
+                    The fearful passage of their death-mark'd love,
+                    And the continuance of their parents' rage,
+                    Which, but their children's end, nought could remove,
+                    Is now the two hours' traffic of our stage;
+                    The which if you with patient ears attend,
+                    What here shall miss, our toil shall strive to mend.</p>
+                <div class="about upper">scene i. <span>Verona. A public place.</div>
+                <p><small>Enter SAMPSON and GREGORY, of the house of Capulet, armed with swords and bucklers</small></p>
+                <div class="about upper">sampson</div>
+                <p>Gregory, o' my word, we'll not carry coals.</p>
+                <div class="about upper">gregory</div>
+                <p>No, for then we should be colliers.</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

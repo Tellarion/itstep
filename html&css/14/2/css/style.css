@@ -1,0 +1,237 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: #1b5589;
+}
+
+header ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+header ul li {
+    margin: 0px 20px 0px 20px;
+}
+
+header ul .active > a {
+    color: #fff;
+}
+
+header ul li a {
+    color: #779fbc;
+    text-decoration: none;
+}
+
+header ul li a:hover {
+    color: #fff;
+    opacity: 0.7;
+}
+
+header .logo {
+    display: flex;
+    margin-right: calc(100vw - 99vw);
+}
+
+header .logo i {
+    font-size: 2rem;
+    color: #fff;
+}
+
+header .profile {
+    display: flex;
+}
+
+header .profile img {
+    height: 48px;
+    width: 48px;
+    margin: 10px;
+}
+
+section h1 {
+    display: flex;
+    justify-content: center;
+    font-weight: 300;
+    margin: calc(100vw - 99vw) 0px calc(100vw - 99vw) 0px;
+}
+
+section .shedule {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+section h3 {
+    display: flex;
+    justify-content: center;
+    font-weight: 200;
+    margin: calc(100vw - 99vw) 0px calc(100vw - 99vw) 0px;
+}
+
+section .hello {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1vw;
+    margin-bottom: 0.5vw;
+}
+
+section .hello div {
+    display: flex;
+}
+
+section .hello div h1 {
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+
+section .hello div h3 {
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin: 0;
+}
+
+section .hello .status {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+section .hello .status li {
+    display: flex;
+    align-items: center;
+}
+
+section .hello .status b {
+    font-weight: 500;
+}
+
+section .hello .status .circle {
+    display: inline-block;
+    margin-left: 5px;
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    border: 1px solid #e0e0e0;
+}
+
+section .hello .status .circle-white {
+    background: #fff;
+}
+
+section .hello .status .circle-green {
+    background: #6fd084;
+}
+
+section .hello .status .circle-blue {
+    background: #37b0c1;
+}
+
+section .hello .status .circle-danger {
+    background: #f98691;
+}
+
+/* CUSTOM BLOCKS */
+
+section .block_inf_white {
+    background: #f5f5f5;
+    color: #000;
+}
+
+section .block_inf_blue {
+    background: #37b0c1;
+    color: #fff;
+}
+
+section .block_inf_danger {
+    background: #f98691;
+    color: #fff;
+}
+
+section .block_inf_success {
+    background: #6fd084;
+    color: #fff;
+}
+
+section .block_inf {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    padding: 20px;
+}
+
+section .block_inf .name {
+    display: flex;
+    font-weight: 500;
+    margin: 0.2vw 0px 0.2vw 0px;
+}
+
+section .block_inf .date {
+    display: flex;
+    margin: 0.2vw 0px 0.2vw 0px;
+}
+
+section .block_inf .about {
+    display: flex;
+    margin: 0.2vw 0px 0.2vw 0px;
+}
+
+section .block_inf .about form {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.btn-custom1 {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px 0px 0px 5px;
+    width: 100%;
+}
+
+.btn-custom2 {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    border-left: none;
+    border-radius: 0px 5px 5px 0px;
+    width: 100%;
+}
+
+.btn-custom1:hover, .btn-custom2:hover {
+    color: #fff;
+    opacity: 0.9;
+}
+
+@media screen and (max-width: 1000px) {
+    /* DZ LAST HTML PRIM */
+    section {
+        display: none;
+    }
+    body::after {
+        position: absolute;
+        content: "хорошо, что в задании нет адаптации под мобилку правда? :)";
+        width: 100vw;
+        height: 100vw;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

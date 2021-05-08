@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dnumber 1</title>
+</head>
+<body>
+    <h1>Hello world</h1>
+    <script>
+        let name = prompt('Как вас зовут?')
+        alert(`Привет, ${name}!`)
+        const actual_year = 2021;
+        let year = prompt('А какого года рождения?')
+        year = actual_year - year;
+        alert(`Понял, вам ${year} лет`)
+        // square
+        let line_square = prompt('Длина стороны квадрата?')
+        let p =  4 * line_square
+        alert(`Периметр квадрата P = ${p}`)
+        // radius
+        let r = prompt('Радиус окружности (пример: 90)')
+        const pi = 3.1415
+        r = pi * (r * r)
+        alert(`Площадь радиуса = ${r}`)
+        // km
+        let first_town = prompt('Расстояние от 1-ого города (КМ)')
+        let second_town = prompt('Расстояние от 2-ого города (КМ)')
+        let delay = prompt('А за сколько часов хотели бы добраться?')
+        let get_all_km_to_dist = first_town - second_town
+        get_all_km_to_dist = (get_all_km_to_dist / delay).toFixed()
+        alert(`Вы бы добрались в тот или тот город со скоросью ${get_all_km_to_dist} KM/h`)
+        // kurs
+        const curs_euro = 0.84; // dollar to euro
+        let dollar = prompt('Сколько у вас долларов?')
+        dollar = dollar * curs_euro
+        alert(`Вы получите при конвертации ${dollar} евро`)
+        // storage
+        let trans = prompt('На сколько у вас флешка? ГБ')
+        const one_file = 820
+        trans = ((trans * 1024) / one_file).toFixed(2);
+        alert(`На флешку поместиться ${trans} файл/ов`)
+        // wallet
+        let wallet = prompt('Сколько денег у вас в кошельке? (руб)')
+        let one_chocolate = prompt('А сколько стоит одна шоколдка в магазине?')
+        wallet = (wallet / one_chocolate).toFixed()
+        alert(`Вы сможете позволить себе ${wallet} шт. шоколада`)
+        // conv
+        let conv = prompt('Ввведите трехзначное число? (пример 300)')
+        conv = conv.split('').reverse().join('')
+        alert(`Ваше число ${conv}`)
+        // sep
+        let int = prompt(`Введите любое число`)
+        int = (int % 2) ? `нечетное` : `четное`
+        alert(`Это число ${int}`)
+    </script>
+</body>
+</html>

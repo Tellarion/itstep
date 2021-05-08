@@ -1,0 +1,69 @@
+body {
+  margin: 0;
+}
+
+.cef {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.cef .doors {
+  display: flex;
+  flex-direction: row;
+  max-width: 800px;
+}
+
+.cef .doors .door_1 {
+  display: flex;
+  background: #872d62;
+  height: 250px;
+  width: 400px;
+  border: 5px solid #651142;
+  animation: DOOR_1_CLOSE 2s linear forwards;
+  z-index: 1;
+}
+
+.cef .doors .door_2 {
+  display: flex;
+  background: #872d62;
+  height: 250px;
+  width: 400px;
+  border: 5px solid #651142;
+  z-index: 1;
+}
+
+.cef .doors .hidden {
+  position: absolute;
+  width: 800px;
+  height: 250px;
+  margin: auto;
+  z-index: 0;
+  text-align: center;
+  margin-top: 100px;
+  font-size: 72px;
+  font-weight: 800;
+  z-index: 0;
+}
+
+.doors:hover .door_1 {
+  animation: DOOR_1_OPEN 2s linear forwards;
+}
+
+.doors:hover .door_2 {
+  animation: DOOR_2_OPEN 2s linear forwards;
+}
+
+@-webkit-keyframes DOOR_1_OPEN {
+  100% { transform: perspective(800px) translateZ(0px) translateX(0px) translateY(0px) rotateY(60deg); }
+}
+
+@-webkit-keyframes DOOR_1_CLOSE {
+  100% { transform: perspective(800px) translateZ(0px) translateX(0px) translateY(0px) rotateY(0deg); }
+}
+
+@-webkit-keyframes DOOR_2_OPEN {
+  100% { transform: perspective(800px) translateZ(0px) translateX(0px) translateY(0px) rotateY(-60deg); }
+}

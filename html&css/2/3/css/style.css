@@ -1,0 +1,42 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    background: #f5f5f5;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: baseline;
+    margin: auto;
+    height: 100vh;
+    width: 100vw;
+    max-width: 800px;
+}
+
+section dt {
+    font-style: italic;
+    margin: 20px 0px 20px 0px;
+}
+
+section dd span {
+    display: block;
+    padding: 5px 0px 5px 0px;
+    color: gray;
+}
+
+section dd a {
+    color: #353694;
+    text-decoration: none;
+}
+
+section dd p {
+    margin: 0;
+    padding-left: 18px;
+}
+
+section dd:before {
+    position: relative;
+    content: attr(data-num) ". ";
+}

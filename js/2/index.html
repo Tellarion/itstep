@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1
+        let year = prompt('Введите ваш возраст')
+        let who_are_you = ""
+        if(year >= 0 && year <= 11) { who_are_you = "Ребенок" } else if(year >= 12 && year <= 17) { who_are_you = "Подросток" } else if(year >= 18 && year <= 59) { who_are_you = "Взрослый" } else if(year >= 60) { who_are_you = "Пенсионер" } else { who_are_you = "Гуманоид" }
+        alert(`Значит вы ${who_are_you}`)
+        // 2
+        let number = parseInt(prompt('Введите число от 0-9'))
+        if(number >= 0 && number <= 9) { 
+            switch(number) {
+                case 0: { alert(')') } break; case 1: { alert('!') } break; case 2: { alert('@') } break;
+                case 3: { alert('#') } break; case 4: { alert('$') } break; case 5: { alert('%') } break;
+                case 6: { alert('^') } break; case 7: { alert('&') } break; case 8: { alert('*') } break;
+                case 9: { alert('(') } break;
+            }
+        } else { alert('Доступно от 0 до 9') }
+        // 3
+        let checknum = prompt("Введите число от 100 до 999 (трехзначное)")
+        if(checknum >= 100 && checknum <= 999) {
+            let find_count = 0;
+            for(let i = 0; i < checknum.length; i++) {
+                for(let m = 0; m < checknum.length; m++) {
+                    if(checknum[i] == checknum[m]) {
+                        find_count++
+                    }
+                }
+                if(i == checknum.length-1 && find_count >= 2) {
+                    alert('В этом числе есть одинаковые символы')
+                } else {
+                    if(i == checknum.length-1) alert('Совпадений нет')
+                }
+                find_count = 0
+            }
+        } else { alert(`Число должно быть от 100-999 диапазоне (трехзначное любое число)`) }
+        // 4
+        let actual_year = prompt('Введите год для определения (2021)')
+        actual_year = (actual_year % 4) ? "весокосный год" : "невесосный год"
+        alert(actual_year)
+        // 5
+        let n = prompt('Введите число для определения палиндрома (10000, 99999)')
+        if(n.length == 5) {
+            let nc = n.length/2
+            let res = 0
+            for(let c = 0; c <= n.length/2-1; c++) {
+                res += (n.substr(c,1) == n.substring(n.length-c-1,n.length-c))
+            }
+            alert("Число " + n + ((res == n.length/2)?"":" не")  + " является палиндромом.")
+        } else {
+            alert('Принимаются числа, только от 10000 до 99999')
+        }
+        // 6
+        let usd = prompt('Сколько у вас USD? (Долларов)')
+        let conv = prompt('В какую валюты, вы хотите перевести? (EUR, AZN, UAN)')
+        const dollar_to_euro = 0.84
+        const dollar_to_azn = 1.70
+        const dollar_to_uan = 27.79
+        conv = conv.toLowerCase()
+        let calc_conv = 0
+        if(conv == 'eur') { conv_calc = usd * dollar_to_euro; alert(`USD to EUR = ${conv_calc}`) } else if(conv == "uan") { conv_calc = usd * dollar_to_uan; alert(`USD to UAN = ${conv_calc}`) } else if(conv == "azn") { conv_calc = usd * dollar_to_azn; alert(`USD to AZN = ${conv_calc}`) } else { alert('Неизвестный тип валюты для конвертации') }
+        // 7
+        let sum_buy = prompt('Сумма ваших покупок? (RUB)')
+        let all_sum_buy = 0
+        if(sum_buy >= 200 && sum_buy <= 299) {
+            all_sum_buy = sum_buy - (sum_buy / 100 * 3)
+        } else if(sum_buy >= 300 && sum_buy <= 499) {
+            all_sum_buy = sum_buy - (sum_buy / 100 * 5)
+        } else if(sum_buy >= 500) {
+            all_sum_buy = sum_buy - (sum_buy / 100 * 7)
+        }
+        alert(`Сумма к оплате будет: ${all_sum_buy}`)
+        // 8
+        let on_perim = parseFloat(prompt('Введите длину окружности'))
+        let on_square = parseFloat(prompt('Введите и периметр квадрата'))
+        let result_square_are_perim = ""
+        result_square_are_perim = (on_square <= on_perim / 2) ? alert(`Сможет поместиться`) : alert(`Не сможет поместиться`)
+        // 9
+        let questions = ['Сколько весит стул?', 'Сколько весит чашка?', 'Сколько весит велосипед?']
+        questions[0] = ['1 кг', '2 кг', '3 кг']
+        questions[1] = ['2 кг', '3 кг', '4 кг']
+        questions[2] = ['3 кг', '4 кг', '5 кг']
+        let my_score = 0
+        for(let i = 0; i < questions.length; i++) {
+            let actual_q = `Вопрос #1\n${questions[i]}\nВарианты ответов:\n`
+            for(let m = 0; m < questions[i].length; m++) {
+                actual_q += `[${m}] ${questions[i][m]}\n`;
+            }
+            let generate_right_ans = Math.floor(Math.random() * (questions[i].length - 0))
+            actual_q += `Выберите номер ответа! [например: 0] [right: ${generate_right_ans}]`
+            let get_result = prompt(actual_q)
+            get_result = (get_result == generate_right_ans) ? my_score = my_score + 1 : my_score = my_score
+        }
+        if(my_score <= 0) my_score = 0
+        alert(`Вы набрали ${my_score} бал.`)
+        //  10
+        let date_x = prompt('Введите день-месяц-год').split('-')
+        let date_y = new Date(date_x[2], date_x[1]-1, date_x[0])
+        date_y.setDate(date_y.getDate()+1)
+        alert(date_y)
+    </script>
+</body>
+</html>
