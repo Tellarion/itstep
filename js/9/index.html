@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dnumber w2 d4</title>
+    <script src="js/classes/circle.js"></script>
+    <script src="js/classes/html.js"></script>
+    <script src="js/classes/css.js"></script>
+</head>
+<body>
+    <script>
+        // ex 1 (check console.log and files)
+        const pi = 3.14
+
+        let circle = new Circle(pi)
+        circle.r = 5
+        console.log(circle.r)
+        console.log(circle.d)
+        console.log(circle.find_s())
+        console.log(circle.find_p())
+        
+        // ex 2 & 3 & 4 (html & css classes and output)
+
+        // css
+        // it needed for use CssClass
+        document.getElementsByTagName('body')[0].insertAdjacentHTML('afterbegin', "<style></style>")
+        let wrap = new CssClass()
+        wrap.add("wrap", [{"display": "flex"}])
+        wrap.add("block", [{"width": "300px", "margin": "10px"}])
+        wrap.add("img", [{"width": "100%"}])
+        wrap.add("text", [{"text-align": "justify"}])
+        //wrap.delete("wrap") (comment if need sla)
+
+        let get_all_css_result = wrap.getCss()
+        console.log(get_all_css_result)
+        //wrap.delete()
+
+        // html
+
+        let wrapper = new HtmlElement('div', false, "", [{"id":"wrapper", "class": "wrap"}], [{"display":"flex"}]) // im added class for 4 ex (... etc example)
+
+        // div 1
+        wrapper.afterBegindElement('wrapper', 0, 'div', false, "", [], [{"width":"300px", "margin": "10px"}])
+        wrapper.afterBegindElement('Tdiv', 1, 'h3', false, "What is Lorem Ipsum?", [], [])
+        wrapper.beforeEndElement('Tdiv', 1, 'img', true, "", [{"src":"img/1.png", "alt":"Lorem Ipsum"}], [])
+        wrapper.beforeEndElement('Tdiv', 1, 'p', false, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lobortis ornare justo, sed fringilla ipsum auctor eget. Donec non massa eget ipsum finibus tristique. Duis aliquam nunc at erat tempus mollis. Nunc pellentesque mi urna, vitae hendrerit nisi semper sed. Phasellus ac lobortis enim. Aliquam blandit porta efficitur. Nulla non nunc ac elit cursus laoreet sed et nibh. Nullam pellentesque sollicitudin urna, at sodales eros efficitur a. Etiam eu felis sollicitudin, fermentum elit non, cursus lorem. Quisque tincidunt justo a nisl ornare finibus.", [], [{"text-align":"justify"}])
+        wrapper.beforeEndElement('Tp', 0, 'a', false, "More...", [{"href":"https://www.lipsum.com", "target":"_blank"}], [])
+
+        // div 2
+
+        wrapper.beforeEndElement('wrapper', 0, 'div', false, "", [], [{"width":"300px", "margin": "10px"}])
+        wrapper.afterBegindElement('Tdiv', 2, 'h3', false, "What is Lorem Ipsum?", [], [])
+        wrapper.beforeEndElement('Tdiv', 2, 'img', true, "", [{"src":"img/1.png", "alt":"Lorem Ipsum"}], [{"width":"100%"}])
+        wrapper.beforeEndElement('Tdiv', 2, 'p', false, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lobortis ornare justo, sed fringilla ipsum auctor eget. Donec non massa eget ipsum finibus tristique. Duis aliquam nunc at erat tempus mollis. Nunc pellentesque mi urna, vitae hendrerit nisi semper sed. Phasellus ac lobortis enim. Aliquam blandit porta efficitur. Nulla non nunc ac elit cursus laoreet sed et nibh. Nullam pellentesque sollicitudin urna, at sodales eros efficitur a. Etiam eu felis sollicitudin, fermentum elit non, cursus lorem. Quisque tincidunt justo a nisl ornare finibus.", [], [{"text-align":"justify"}])
+        wrapper.beforeEndElement('Tp', 1, 'a', false, "More...", [{"href":"https://www.lipsum.com", "target":"_blank"}], [])
+        
+        // example methods (p.s ex a)
+        wrapper.setAttr("p", 1, {"id":"test"})
+        wrapper.setCss("p", 1, "color: red;")
+
+        let get_all_html_result = wrapper.getHtml()
+        console.log(get_all_html_result)
+
+        /* четвертое задание, это совместимость 2 и 3-ого задания (примеры уже приведены и результат выведен) без document.write (за исключением добавления его в HtmlBlock, из-за вариации и реализации выше, нет никакого смысла извращений) (а с выводом и привязкой для более точного и удобного результата) */
+
+    </script>
+</body>
+</html>
