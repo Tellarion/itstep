@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dnumber 2 5</title>
+</head>
+<body>
+    <style id="css"></style>
+    <script src="js/marker.js"></script>
+    <script src="js/newdate.js"></script>
+    <script src="js/emps.js"></script>
+    <script>
+        // ex 1
+        let ink = new Ink('red', 0)
+        ink.please(50)
+        ink.write('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas, veritatis accusantium totam vero sed consequatur ea similique corrupti minima, id labore iste error harum quo voluptatibus! Amet magni maxime vitae.     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas, veritatis accusantium totam vero sed consequatur ea similique corrupti minima, id labore iste error harum quo voluptatibus! Amet magni maxime vitae.')
+        // ex 2
+        let nd = new ExtendedDate()
+        nd.get_day_and_month()
+        let actual_date_and_plus = new Date()
+        actual_date_and_plus = actual_date_and_plus.setSeconds(60) // +/- use
+        console.log(nd.check_dates(actual_date_and_plus))
+        console.log(nd.check_ves())
+        console.log(nd.next_date())
+        // ex 3
+        let emps = [{"name": "Данилов Александр Валерьевич", "office":"Разработка ПО", "salary":100000, "dbh":"29.10.1993"}, {"name": "Данилов Кирилл Сергеевич", "office":"Разработка ПО2", "salary":100000, "dbh":"29.10.1997"}, {"name": "Дементьев Александр Валерьевич", "office":"Разработка ПО3", "salary":100000, "dbh":"29.10.1994"}, {"name": "Петров Александр Валерьевич", "office":"Разработка ПО4", "salary":100000, "dbh":"29.10.1996"}, {"name": "Петросян Александр Валерьевич", "office":"Разработка ПО5", "salary":100000, "dbh":"29.10.1995"}]
+        let employees = new EmpTable(emps)
+        document.write(employees.getHtml())
+        // ex 4 (ex 3!..more)
+        let styled = new StyledEmpTable({"font-size":"14px", "text-align":"center"})
+        let get_css = styled.getStyles()
+        console.log(get_css)
+        style_find = document.getElementById('css')
+        style_find.innerHTML = get_css
+    </script>
+</body>
+</html>
