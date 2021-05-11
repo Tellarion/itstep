@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dnumber 5 14</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+    <section>
+        <div class="ex1">
+            <div class="board">
+                <div class="messages">
+                    <div class="message">
+                        <div class="heading">
+                            <div class="name">Name</div>
+                            <div class="date">11.05.2021, 18:22:53</div>
+                        </div>
+                        <div class="about">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem veritatis repellat accusamus. Itaque odit dignissimos quia consequatur neque expedita, veritatis in soluta impedit et officia assumenda dolore maiores saepe eos!</div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <h3>Add new message:</h3>
+                    <p><label>Your name:</label><input type="text" id="name" /></p>
+                    <p><label>Your messages:</label><textarea id="message" col="4" rows=5></textarea></p>
+                    <p><button id="send_message">Send</button></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div id="questions">
+
+        </div>
+    </section>
+    <section>
+        <div class="editor">
+            <ul>
+                <li><input type="checkbox" id="is_bold" name="bold"/>Bold</li>
+                <li><input type="checkbox" id="is_underline" name="underline"/>Underline</li>
+                <li><input type="checkbox" id="is_italics" name="italics"/>Italics</li>
+                <li><input type="radio" name="align" value="left"/>Left</li>
+                <li><input type="radio" name="align" value="right"/>Right</li>
+                <li><input type="radio" name="align" value="justify"/>Justify</li>
+            </ul>
+            <textarea id="editor_text" col="4" rows="5"></textarea>
+            <button id="editor">Show text</button>
+            <div class="output">
+                <label>Result:</label>
+                <div class="show">
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        // ex 1
+
+        $('#send_message').on('click', () => {
+            let name = $('#name').val()
+            let message = $('#message').val()
+            let date = new Date().toLocaleString('ru')
+            let generate_tpl = `
+            <div class="message">
+                <div class="heading">
+                    <div class="name">${name}</div>
+                    <div class="date">${date}</div>
+                </div>
+                <div class="about">${message}</div>
+            </div>
+`
+            $('.messages').append(generate_tpl)
+        })
+
+        // ex 2
+        let questions = [
+            {"question":"How many letters are there in the world `Hello`?", "asks": ['5', '2', '3', '4'], "right": 0},
+            {"question":"How many letters are there in the world `World`?", "asks": ['1', '2', '3', '5'], "right": 3},
+            {"question":"How many letters are there in the world `Hi`?", "asks": ['2', '6', '3', '4'], "right": 0},
+            {"question":"How many letters are there in the world `Test`?", "asks": ['4', '2', '3', '1'], "right": 0}
+        ]
+
+        let scores = 0
+        let actual_question = 0
+        let all_questions = questions.length
+        
+        function view_question() {
+            let generate_form = `${actual_question+1}) ${questions[actual_question].question}`
+            for(let i = 0; i < questions[actual_question].asks.length; i++) {
+                generate_form += `<p><input type="radio" id="question_${actual_question}" name="question" value="${questions[actual_question].asks[i]}" /> ${questions[actual_question].asks[i]}</p>`
+            }
+            if(actual_question == all_questions-1) {
+                generate_form += `<p><button id="next_q">Finish</button></p>`
+            } else {
+                generate_form += `<p><button id="next_q">Next</button></p>`
+            }
+            $('#questions').html(generate_form)
+
+            $('#next_q').on('click', () => {
+                let get_value = $(`#question_${actual_question}`).val()
+                if(get_value == questions[actual_question].asks[questions[actual_question].right]) {
+                    scores++
+                }
+                actual_question++
+                if(actual_question == all_questions) {
+                    $('#questions').html(`Result: ${scores} correct answers to ${all_questions} questions.`)
+                } else {
+                    view_question()
+                }
+            })
+        }
+
+        view_question()
+
+        // ex 3
+
+        let styles = {}
+        styles.bold = false
+        styles.underline = false
+        styles.italics = false
+        styles.left = false
+        styles.right = false
+        styles.justify = false
+
+        $('#editor').on('click', () => {
+            let value = $('#editor_text').val()
+            let style = ``
+            style += ($('#is_bold').is(":checked") == true) ? `font-weight: 700;` : ``
+            style += ($('#is_underline').is(":checked") == true) ? `text-decoration: underline;` : ``
+            style += ($('#is_italics').is(":checked") == true) ? `font-style: italic;` : ``
+            let get_align = $('input[name="align"]:checked').val()
+            style += (get_align) ? `text-align: ${get_align};` : ``
+            //style += ()
+            $('.show').html(`<div style="${style}">${value}</div>`)
+        })
+        
+    </script>
+</body>
+</html>
