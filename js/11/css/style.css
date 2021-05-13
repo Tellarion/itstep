@@ -36,7 +36,12 @@ section {
     padding: 20px;
 }
 
-input, button {
+.ex1_2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.ex1_2 input, .ex1_2 button, .ex4 button {
     margin: 20px;
 }
 
@@ -104,13 +109,39 @@ input, button {
 }
 
 .ex6 .block_1 {
-    display: flex;
-    height: 300px;
+    display: block;
     width: 300px;
+    align-items: flex-start;
 }
 
 .ex6 .block_2 {
-    display: flex;
-    height: 300px;
+    display: block;
     width: 300px;
+    align-items: flex-end;
+    padding-top: 50px;
 }
+
+.ex6 .block_1 button, .ex6 .block_2 button {
+    display: inline-block;
+}
+
+.ex6 .block_2 button {
+
+}
+
+.ex6 .tooltip {
+    position: absolute;
+    display: block;
+    background-color: #8a53a9;
+    color: #fff;
+    padding: 5px;
+}
+
+#ex8 {
+    border: 1px solid #8a8a8a;
+    padding: 20px;
+}
+
+#ex8 { height: 200px; width: 300px; position: relative; }
+#ex8 .resizable { background: cyan; position: relative; }
+#ex8 .resizer { width: 10px; height: 10px; background: #8a8a8a; position: absolute; right: 0; bottom: 0; cursor: se-resize; }
