@@ -81,3 +81,96 @@ $('.info .info_block h3').on('click', function() {
     console.log(index)
     $(`.info .info_block:eq(${index})`).find('p').slideToggle();
 })
+
+/* ex_4 */
+
+let news = [
+    {"name": "What is Ipsum Dollor?", "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore beatae debitis hic deleniti iste odio, itaque dolore quaerat quibusdam reprehenderit expedita tenetur temporibus consequuntur maiores, eum numquam ducimus velit commodi!"},
+    {"name": "What is Ipsum Dollor? 2", "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore beatae debitis hic deleniti iste odio, itaque dolore quaerat quibusdam reprehenderit expedita tenetur temporibus consequuntur maiores, eum numquam ducimus velit commodi!"},
+    {"name": "What is Ipsum Dollor? 3", "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore beatae debitis hic deleniti iste odio, itaque dolore quaerat quibusdam reprehenderit expedita tenetur temporibus consequuntur maiores, eum numquam ducimus velit commodi!"},
+    {"name": "What is Ipsum Dollor? 4", "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore beatae debitis hic deleniti iste odio, itaque dolore quaerat quibusdam reprehenderit expedita tenetur temporibus consequuntur maiores, eum numquam ducimus velit commodi!"},
+    {"name": "What is Ipsum Dollor? 5", "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore beatae debitis hic deleniti iste odio, itaque dolore quaerat quibusdam reprehenderit expedita tenetur temporibus consequuntur maiores, eum numquam ducimus velit commodi!"},
+    {"name": "What is Ipsum Dollor? 6", "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore beatae debitis hic deleniti iste odio, itaque dolore quaerat quibusdam reprehenderit expedita tenetur temporibus consequuntur maiores, eum numquam ducimus velit commodi!"},
+    {"name": "What is Ipsum Dollor? 7", "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore beatae debitis hic deleniti iste odio, itaque dolore quaerat quibusdam reprehenderit expedita tenetur temporibus consequuntur maiores, eum numquam ducimus velit commodi!"},
+    {"name": "What is Ipsum Dollor? 8", "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore beatae debitis hic deleniti iste odio, itaque dolore quaerat quibusdam reprehenderit expedita tenetur temporibus consequuntur maiores, eum numquam ducimus velit commodi!"},
+    {"name": "What is Ipsum Dollor? 9", "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore beatae debitis hic deleniti iste odio, itaque dolore quaerat quibusdam reprehenderit expedita tenetur temporibus consequuntur maiores, eum numquam ducimus velit commodi!"},
+    {"name": "What is Ipsum Dollor? 10", "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore beatae debitis hic deleniti iste odio, itaque dolore quaerat quibusdam reprehenderit expedita tenetur temporibus consequuntur maiores, eum numquam ducimus velit commodi!"},
+    {"name": "What is Ipsum Dollor? 11", "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore beatae debitis hic deleniti iste odio, itaque dolore quaerat quibusdam reprehenderit expedita tenetur temporibus consequuntur maiores, eum numquam ducimus velit commodi!"},
+    {"name": "What is Ipsum Dollor? 12", "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore beatae debitis hic deleniti iste odio, itaque dolore quaerat quibusdam reprehenderit expedita tenetur temporibus consequuntur maiores, eum numquam ducimus velit commodi!"},
+    {"name": "What is Ipsum Dollor? 13", "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore beatae debitis hic deleniti iste odio, itaque dolore quaerat quibusdam reprehenderit expedita tenetur temporibus consequuntur maiores, eum numquam ducimus velit commodi!"},
+    {"name": "What is Ipsum Dollor? 14", "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore beatae debitis hic deleniti iste odio, itaque dolore quaerat quibusdam reprehenderit expedita tenetur temporibus consequuntur maiores, eum numquam ducimus velit commodi!"},
+    {"name": "What is Ipsum Dollor? 15", "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore beatae debitis hic deleniti iste odio, itaque dolore quaerat quibusdam reprehenderit expedita tenetur temporibus consequuntur maiores, eum numquam ducimus velit commodi!"},
+    {"name": "What is Ipsum Dollor? 16", "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore beatae debitis hic deleniti iste odio, itaque dolore quaerat quibusdam reprehenderit expedita tenetur temporibus consequuntur maiores, eum numquam ducimus velit commodi!"},
+    {"name": "What is Ipsum Dollor? 17", "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore beatae debitis hic deleniti iste odio, itaque dolore quaerat quibusdam reprehenderit expedita tenetur temporibus consequuntur maiores, eum numquam ducimus velit commodi!"},
+    {"name": "What is Ipsum Dollor? 18", "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore beatae debitis hic deleniti iste odio, itaque dolore quaerat quibusdam reprehenderit expedita tenetur temporibus consequuntur maiores, eum numquam ducimus velit commodi!"},
+]
+
+let news_index = 0
+let news_offest = 5
+
+function show_news(index, offset) {
+    let news_tpl = ``
+    for(let i = index; i < offset; i++) {
+        if(i == news.length) { $('#load_news').remove() }
+        if(news[i]) {
+            news_tpl += `
+            <div class="list">
+                <div class="name">${news[i].name}</div>
+                <div class="about">${news[i].about}</div>
+            </div>
+            `
+        }
+    }
+    return news_tpl
+}
+
+function load() {
+    let content = ``;
+    content = show_news(news_index, news_offest)
+    $('.news').append(content)
+    news_index = news_offest
+    news_offest = news_offest + 5
+}
+
+$('#load_news').on('click', function() {
+    load()
+})
+
+
+/* ex_5 */
+
+function generateTable(firstday, days) {
+    let table = ``
+    let days_name = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SUT', 'SUN']
+    let counter_days = 1
+    for(let i = 0; i < days_name.length; i++) {
+        table += `<th>${days_name[i]}</th>`
+    }
+    for(let i = 0; i < 5; i++) {
+        table += `<tr>`
+        for(let m = 0; m < days_name.length; m++) {
+            if(i == 0 && m < firstday) {
+                table += `<td></td>`
+            } else {
+                if(counter_days >= days) {
+                    table += `<td></td>`
+                } else {
+                    table += `<td>${counter_days}</td>`
+                }
+                if(counter_days < days) { counter_days++ }
+            }
+        }
+        table += `</tr>`
+    }
+    return table
+}
+
+$('#ex5_gen').on('click', function() {
+    let get_month = $('#ex5_month').val()
+    let get_year = $('#ex5_year').val()
+    let get_days = new Date(get_year, get_month, 0).getDate()
+    let first_day = new Date(get_year, get_month, 1).getDay()
+    console.log(first_day)
+    let table_tpl = generateTable(first_day, get_days)
+    $('.calendar_table').html(`<table border='1' style="text-align: center;">${table_tpl}</table>`)
+})

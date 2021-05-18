@@ -113,3 +113,19 @@ section {
     color: #518cbb;
     padding: 10px;
 }
+
+.news {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    overflow: auto;
+}
+
+.news .list {
+    display: flex;
+    flex-direction: column;
+}
+
+.news .list .name, .news .list .about {
+    display: flex;
+}
