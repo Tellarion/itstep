@@ -10,6 +10,7 @@
 </head>
 <body>
     <section>
+        <h2>Ex 1</h2>
         <div class="ex1">
             <div class="board">
                 <div class="messages">
@@ -31,11 +32,13 @@
         </div>
     </section>
     <section>
+        <h2>Ex 2</h2>
         <div id="questions">
 
         </div>
     </section>
     <section>
+        <h2>Ex 3</h2>
         <div class="editor">
             <ul>
                 <li><input type="checkbox" id="is_bold" name="bold"/>Bold</li>
@@ -55,87 +58,89 @@
             </div>
         </div>
     </section>
-    <script>
-        // ex 1
-
-        $('#send_message').on('click', () => {
-            let name = $('#name').val()
-            let message = $('#message').val()
-            let date = new Date().toLocaleString('ru')
-            let generate_tpl = `
-            <div class="message">
-                <div class="heading">
-                    <div class="name">${name}</div>
-                    <div class="date">${date}</div>
+    <section>
+        <h2>Ex 4</h2>
+        <div class="store">
+            <div class="books">
+                <div class="book">
+                    <img src="img/1.jpg" alt="book_1" />
+                    <div class="name">Learning JavaScript: JavaScript Essentials for Modern Application Development</div>
+                    <div class="author">Ethan Brown</div>
+                    <div class="coast"><span>16</span>$</div>
+                    <button class="preview_select" data-name="Learning JavaScript: JavaScript Essentials for Modern Application Development" data-author="Ethan Brown" data-coast="16">Select</button>
                 </div>
-                <div class="about">${message}</div>
+                <div class="book">
+                    <img src="img/2.jpg" alt="book_2" />
+                    <div class="name">You Don't Know JS: Scope & Closures</div>
+                    <div class="author">Kyle Simpson</div>
+                    <div class="coast"><span>20</span>$</div>
+                    <button class="preview_select" data-name="You Don't Know JS: Scope & Closures" data-author="Kyle Simpson" data-coast="20">Select</button>
+                </div>
+                <div class="book">
+                    <img src="img/3.jpg" alt="book_3" />
+                    <div class="name">Javascript and JQuery: Interactive Front-End Web Development</div>
+                    <div class="author">Jon Duckett</div>
+                    <div class="coast"><span>22</span>$</div>
+                    <button class="preview_select" data-name="Javascript and JQuery: Interactive Front-End Web Development" data-author="Jon Duckett" data-coast="22">Select</button>
+                </div>
             </div>
-`
-            $('.messages').append(generate_tpl)
-        })
+            <div class="preview">
+                <div class="wrapper_in">
+                    <div class="input">
+                        <label>Book:</label>
+                        <input type="text" id="preview_name" disabled/>
+                    </div>
+                    <div class="input">
+                        <label>Quantity:</label>
+                        <input type="text" id="preview_quantity"/>
+                    </div>
+                    <div class="input">
+                        <label>Name:</label>
+                        <input type="text" id="preview_author"/>
+                    </div>
+                    <div class="input">
+                        <label>Delivery address:</label>
+                        <textarea id="preview_delivery"></textarea>
+                    </div>
+                    <div class="input">
+                        <label>Delivery date:</label>
+                        <input type="date" id="preview_date"/>
+                    </div>
+                    <div class="input">
+                        <label>Comment:</label>
+                        <textarea id="preview_comment"></textarea>
+                    </div>
+                    <button id="buy">Buy</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h2>Ex 5</h2>
+        <div class="lesson">
+            
+        </div>
+    </section>
+    <section>
+        <h2>Ex 6</h2>
+        <div class="order">
 
-        // ex 2
-        let questions = [
-            {"question":"How many letters are there in the world `Hello`?", "asks": ['5', '2', '3', '4'], "right": 0},
-            {"question":"How many letters are there in the world `World`?", "asks": ['1', '2', '3', '5'], "right": 3},
-            {"question":"How many letters are there in the world `Hi`?", "asks": ['2', '6', '3', '4'], "right": 0},
-            {"question":"How many letters are there in the world `Test`?", "asks": ['4', '2', '3', '1'], "right": 0}
-        ]
+        </div>
+        <div class="tickets">
+            <h5>My tickets:</h5>
+            <table border="1" style="text-align: center;">
+                <thead>
+                    <th>Direction</th>
+                    <th>Date</th>
+                    <th>Value</th>
+                    <th>Seat</th>
+                </thead>
+                <tbody id="tickets_storage">
 
-        let scores = 0
-        let actual_question = 0
-        let all_questions = questions.length
-        
-        function view_question() {
-            let generate_form = `${actual_question+1}) ${questions[actual_question].question}`
-            for(let i = 0; i < questions[actual_question].asks.length; i++) {
-                generate_form += `<p><input type="radio" id="question_${actual_question}" name="question" value="${questions[actual_question].asks[i]}" /> ${questions[actual_question].asks[i]}</p>`
-            }
-            if(actual_question == all_questions-1) {
-                generate_form += `<p><button id="next_q">Finish</button></p>`
-            } else {
-                generate_form += `<p><button id="next_q">Next</button></p>`
-            }
-            $('#questions').html(generate_form)
-
-            $('#next_q').on('click', () => {
-                let get_value = $(`#question_${actual_question}`).val()
-                if(get_value == questions[actual_question].asks[questions[actual_question].right]) {
-                    scores++
-                }
-                actual_question++
-                if(actual_question == all_questions) {
-                    $('#questions').html(`Result: ${scores} correct answers to ${all_questions} questions.`)
-                } else {
-                    view_question()
-                }
-            })
-        }
-
-        view_question()
-
-        // ex 3
-
-        let styles = {}
-        styles.bold = false
-        styles.underline = false
-        styles.italics = false
-        styles.left = false
-        styles.right = false
-        styles.justify = false
-
-        $('#editor').on('click', () => {
-            let value = $('#editor_text').val()
-            let style = ``
-            style += ($('#is_bold').is(":checked") == true) ? `font-weight: 700;` : ``
-            style += ($('#is_underline').is(":checked") == true) ? `text-decoration: underline;` : ``
-            style += ($('#is_italics').is(":checked") == true) ? `font-style: italic;` : ``
-            let get_align = $('input[name="align"]:checked').val()
-            style += (get_align) ? `text-align: ${get_align};` : ``
-            //style += ()
-            $('.show').html(`<div style="${style}">${value}</div>`)
-        })
-        
-    </script>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <script src="js/ex.js"></script>
 </body>
 </html>
