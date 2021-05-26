@@ -129,3 +129,20 @@ section {
 .news .list .name, .news .list .about {
     display: flex;
 }
+
+.links ul li a {
+    color: #534895;
+    text-decoration: none;
+}
+
+.links ul li a:hover {
+    color: #7565d2;
+}
+
+.books {
+
+}
+
+.books ul {
+    list-style-type: decimal;
+}

@@ -132,6 +132,8 @@ function load() {
     news_offest = news_offest + 5
 }
 
+load() // default
+
 $('#load_news').on('click', function() {
     load()
 })
@@ -143,21 +145,27 @@ function generateTable(firstday, days) {
     let table = ``
     let days_name = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SUT', 'SUN']
     let counter_days = 1
+    let filled = false
+
     for(let i = 0; i < days_name.length; i++) {
         table += `<th>${days_name[i]}</th>`
     }
-    for(let i = 0; i < 5; i++) {
+
+    const calendar = (firstday >= 5) ? 6 : 5;
+
+    for(let i = 0; i < calendar; i++) {
         table += `<tr>`
         for(let m = 0; m < days_name.length; m++) {
-            if(i == 0 && m < firstday) {
+            if(i == 0 && m < firstday-1) {
                 table += `<td></td>`
-            } else {
-                if(counter_days >= days) {
-                    table += `<td></td>`
-                } else {
+            } else { filled = true }
+            if(filled == true) {
+                if(counter_days <= days) {
                     table += `<td>${counter_days}</td>`
+                    counter_days++
+                } else {
+                    table += `<td></td>`
                 }
-                if(counter_days < days) { counter_days++ }
             }
         }
         table += `</tr>`
@@ -169,8 +177,23 @@ $('#ex5_gen').on('click', function() {
     let get_month = $('#ex5_month').val()
     let get_year = $('#ex5_year').val()
     let get_days = new Date(get_year, get_month, 0).getDate()
-    let first_day = new Date(get_year, get_month, 1).getDay()
-    console.log(first_day)
+    let first_day = new Date(get_year, get_month, 1-get_days).getDay()
+    console.log(new Date(get_year, get_month, 1-get_days).toDateString())
     let table_tpl = generateTable(first_day, get_days)
-    $('.calendar_table').html(`<table border='1' style="text-align: center;">${table_tpl}</table>`)
+    $('.calendar_table').html(`<table border='1' style="text-align: center; margin: 1vw;">${table_tpl}</table>`)
 })
+
+/* ex 6 */
+
+let get_all_li = $('.links ul li')
+
+for(let i = 0; i < get_all_li.length; i++) {
+    let act_li = get_all_li[i]
+    //console.log($(act_li).text())
+    if($(act_li).text().indexOf("http") != -1) {
+        $(act_li).find('a').css('border-bottom', '1px dotted #534895')
+    }
+}
+
+/* ex 7 */
+
