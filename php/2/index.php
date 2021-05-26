@@ -45,7 +45,7 @@
         'y' =>  75,
         'color' =>  'Green', // estab. #, hex etc..
     );
-    $output_2 = "<p>X = 50, Y - 50, Color = Green</p>";
+    $output_2 = "<p>X = {$param['x']}, Y - {$param['y']}, Color = Green</p>";
     $output_2 .= <<<tellariongit
     <div style="position: relative; width: {$param['x']}px; height: {$param['y']}px; background-color: {$param['color']};"></div>
 tellariongit;
