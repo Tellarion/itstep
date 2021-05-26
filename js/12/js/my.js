@@ -49,7 +49,6 @@ let images = ['img/edu1.jpg', 'img/edu2.jpg', 'img/edu3.jpg', 'img/edu4.jpg', 'i
 let image_idx = 0
 
 function slide(idx) {
-    console.log(idx)
     $('.gallery .show .content').html(`<img src="${images[idx]}" alt="image_${idx}" />`)
     if(idx == 0) { $('.gallery .show .arrow:first-child').css('color', '#aaa') } else { if(idx == images.length-1) { $('.gallery .show .arrow:last-child').css('color', '#aaa')} else { $('.gallery .show .arrow:first-child').css('color', '#000'); $('.gallery .show .arrow:last-child').css('color', '#000') } }
 }
@@ -74,12 +73,11 @@ slide(image_idx)
 
 // hidden default
 
-$(`.info .info_block`).find('p').slideToggle();
+$(`.info .info_block`).find('p').slideToggle()
 
 $('.info .info_block h3').on('click', function() {
     let index = $('.info .info_block h3').index(this)
-    console.log(index)
-    $(`.info .info_block:eq(${index})`).find('p').slideToggle();
+    $(`.info .info_block:eq(${index})`).find('p').slideToggle()
 })
 
 /* ex_4 */
@@ -178,12 +176,12 @@ $('#ex5_gen').on('click', function() {
     let get_year = $('#ex5_year').val()
     let get_days = new Date(get_year, get_month, 0).getDate()
     let first_day = new Date(get_year, get_month, 1-get_days).getDay()
-    console.log(new Date(get_year, get_month, 1-get_days).toDateString())
+    //console.log(new Date(get_year, get_month, 1-get_days).toDateString())
     let table_tpl = generateTable(first_day, get_days)
     $('.calendar_table').html(`<table border='1' style="text-align: center; margin: 1vw;">${table_tpl}</table>`)
 })
 
-/* ex 6 */
+/* ex_6 */
 
 let get_all_li = $('.links ul li')
 
@@ -195,5 +193,185 @@ for(let i = 0; i < get_all_li.length; i++) {
     }
 }
 
-/* ex 7 */
+/* ex_7 */
 
+let actual_book = null
+let indexes = []
+let index = 0
+let shift_first = -1
+
+function clear_all(indexes) {
+    indexes.forEach(element => {
+        $(`.books li:eq('${element}')`).css('background', 'inherit')
+        $(`.books li:eq('${element}')`).attr('data-active', "0")
+    })
+    indexes.slice(1, indexes.length)
+}
+
+$('.books li').on('click', function(e) {
+    if(e.ctrlKey) {
+        let status = $(this).attr('data-active')
+        index = $(this).index()
+        if(parseInt(status) == 0) {
+            indexes.push(index)
+            $(this).attr('data-active', "1")
+            $(this).css('background', "#ffa984")
+            shift_first = index
+        } else {
+            indexes.filter(value => {
+                value != index
+            })
+            $(this).attr('data-active', "0")
+            $(this).css('background', "inherit")
+            shift_first = -1
+        }
+    } else if(e.shiftKey) {
+        /* dont corrent only one way down, after fix */
+        index = $(this).index()
+        clear_all(indexes)
+        if(shift_first != -1) {
+            if(shift_first != index) {
+                for(var i = shift_first; i <= index; i++) {
+                    indexes.push(i)
+                    $(`.books li:eq('${indexes[i]}')`).attr('data-active', "1")
+                    $(`.books li:eq('${indexes[i]}')`).css('background', "#ffa984")
+                }
+                shift_first = -1
+            }
+        } else {
+            shift_first = index
+        }
+    } else {
+        let status = $(this).attr('data-active')
+        index = $(this).index()
+        if(parseInt(status) == 0) {
+            clear_all(indexes)
+            indexes.push(index)
+            $(this).attr('data-active', "1")
+            $(this).css('background', "#ffa984")
+            shift_first = index
+        } else {
+            indexes.filter(value => {
+                value != index
+            })
+            $(this).attr('data-active', "0")
+            $(this).css('background', "inherit")
+            shift_first = -1
+        }
+    }
+})
+
+/* ex_8 */
+
+let pressed = 0
+
+$(document).bind("keyup keydown", function(e) {
+    //console.log(e.which)
+    /* keys = [219] and 221 */
+    if(e.shiftKey && e.which == 219) {
+        if(pressed == 0) {
+            pressed++
+            let get_html_to_text = $('.key').html()
+            $('.key').replaceWith(`<textarea class="key">${get_html_to_text}</textarea>`)
+        }
+    }
+    if(e.shiftKey && e.which == 221) {
+        if(pressed == 1) {
+            pressed--
+            let get_text_to_html = $('.key').val()
+            $('.key').replaceWith(`<div class="key">${get_text_to_html}</div>`)
+        }
+    }
+})
+
+/* ex_9 */
+
+var people = [
+    {
+        "name":"Aleksandr",
+        "lastname":"Danilov",
+        "age": 23,
+        "company":"TellarionDev"
+    },
+    {
+        "name":"Mark",
+        "lastname":"Zuckerberg",
+        "age": 34,
+        "company":"Facebook"
+    },
+    {
+        "name":"Bill",
+        "lastname":"Gates",
+        "age": 62,
+        "company":"Microsoft"
+    },
+    {
+        "name":"Larry",
+        "lastname":"Page",
+        "age": 45,
+        "company":"Google"
+    },
+    {
+        "name":"Timothy",
+        "lastname":"Cock",
+        "age": 57,
+        "company":"Apple"
+    },
+]
+
+let people_sort = []
+
+for(let i = 0; i < people; i++) {
+    people_sort[i] = false
+}
+
+function view_table(sort) {
+    let generate_table_tr = ``
+    people_sort[sort] = (people_sort[sort] == false) ? true : false
+    switch(sort) {
+        case 0: {
+            if(people_sort[sort] == true) {
+                people.sort(function(a, b) { return a.name.length - b.name.length } )
+            } else if(people_sort[sort] == false) {
+                people.sort(function(a, b) { return a.name.length - b.name.length } ).reverse()
+            }
+        } break;
+        case 1: {
+            if(people_sort[sort] == true) {
+                people.sort(function(a, b) { return a.lastname.length - b.lastname.length } )
+            } else if(people_sort[sort] == false) {
+                people.sort(function(a, b) { return a.lastname.length - b.lastname.length } ).reverse()
+            }
+        } break;
+        case 2: {
+            if(people_sort[sort] == true) {
+                people.sort(function(a, b) { return a.age - b.age } )
+            } else if(people_sort[sort] == false) {
+                people.sort(function(a, b) { return a.age - b.age } ).reverse()
+            }
+        } break;
+        case 3: {
+            if(people_sort[sort] == true) {
+                people.sort(function(a, b) { return a.company.length - b.company.length } )
+            } else if(people_sort[sort] == false) {
+                people.sort(function(a, b) { return a.company.length - b.company.length } ).reverse()
+            }
+        } break;
+        default: {
+
+        } break;
+    }
+
+    people.forEach((man) => {
+        generate_table_tr += `<tr><td>${man.name}</td><td>${man.lastname}</td><td>${man.age}</td><td>${man.company}</td></tr>`
+    })
+
+    $('#people').html(generate_table_tr)
+}
+
+$('.sry th').on('click', function() {
+    let get_index = $(this).index()
+    view_table(get_index)
+})
+
+view_table()
