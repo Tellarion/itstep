@@ -89,9 +89,10 @@
     $output .= "</thead>";
     $week_start = date('D', mktime(0, 0, 0, date('m'), 1, date('Y')));
     $week_start = date('d', strtotime("{$week_start}"));
+    $week_start = ($week_start == 8) ? 1 : $week_start;
     $get_days_by_m = cal_days_in_month(CAL_GREGORIAN, date('m'), date('Y'));
     $stren = 1;
-    for($i = 1; $i < $get_days_by_m+$week_start+($stren*2); $i++) {
+    for($i = 1; $i < $get_days_by_m+$week_start+($stren*1.7); $i++) {
         if($i % 8 != 0) {
             if($i % 8 == 1) {
                 $output .= "</tr>";
@@ -116,6 +117,21 @@
             $output .= "<tr>";
         }
     }
+    $output .= "</table>";
+    /* ex_7 */
+    $counter = 1;
+    $output .= "<div style='margin-top: 20px;'><div class='last'>";
+    for($i = 1; $i < 11; $i++) {
+        if($i % 6 == 0 || $i == 1) {
+            $output .= "<div>";
+        }
+        $output .= "<img src='img/img{$i}.jpg' />";
+        if($i % 6 == 0 && $counter == 5 || $i == 5) {
+            $output .= "</div>";
+        }
+        $counter++;
+    }
+    $output .= "</div></div>";
     
 ?>
 
@@ -149,6 +165,19 @@
         }
         .weekend {
             color: red;
+        }
+        .last {
+            max-width: 1000px;
+        }
+        .last img {
+            float: left;
+            width: 200px;
+            height: 150px;
+        }
+        .last div {
+            content: "";
+            display: table;
+            clear: both;
         }
     </style>
     <?php echo $output; ?>
