@@ -139,6 +139,7 @@ $(document).ready(function() {
 
     $('#search').on('click', function(event) {
         event.preventDefault()
+        $('.live').html(`<div class="movies"></div>`)
         finded_text = $('#title').val()
         send_to_api_movies(finded_text, page_init).then(data => {
             if(data.status == true) {
