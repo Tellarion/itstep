@@ -7,13 +7,14 @@ $(document).ready(function() {
     var page_init = 1
     var page_count = 0
     var finded_text = ""
+    var finded_type = null
 
-    function send_to_api_movies(text, page) {
+    function send_to_api_movies(text, type, page) {
 
         return new Promise(resolve => {
             $.ajax({
                 method: "GET",
-                url: `http://omdbapi.com/?apikey=${MY_FREE_API_KEY}&s=${text}&page=${page}`
+                url: `http://omdbapi.com/?apikey=${MY_FREE_API_KEY}&s=${text}&type=${type}&page=${page}`
             })
             .done(function(data) {
                 console.log(data) // debug
@@ -131,7 +132,7 @@ $(document).ready(function() {
         $('.live').append(tpl)
         $('.paginator button').on('click', function() {
             let selected = $(this).text()
-            send_to_api_movies(finded_text, selected).then(data => {
+            send_to_api_movies(finded_text, finded_type, selected).then(data => {
                 show_movies(data.data.Search)
             })
         })
@@ -141,7 +142,9 @@ $(document).ready(function() {
         event.preventDefault()
         $('.live').html(`<div class="movies"></div>`)
         finded_text = $('#title').val()
-        send_to_api_movies(finded_text, page_init).then(data => {
+        finded_type = $('#type').val()
+        console.log(finded_type)
+        send_to_api_movies(finded_text, finded_type, page_init).then(data => {
             if(data.status == true) {
                 let total_results = data.data.totalResults
                 show_movies(data.data.Search)
